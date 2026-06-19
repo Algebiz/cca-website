@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"Sora";font-weight:600;font-display:swap;src:url("assets/fonts/sora-600.woff2") format("woff2");}
+@font-face{font-family:"Sora";font-weight:700;font-display:swap;src:url("assets/fonts/sora-700.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url("assets/fonts/inter-400.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url("assets/fonts/inter-500.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
+*{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
+</style>
+</helmet>
+<div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;">
+  <dc-import name="Navbar" active="academics" hint-size="100%,72px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background:#f9e5e5;padding:96px 5% 84px;">
+    <div style="max-width:820px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Academics · 课程体系</p>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(36px,5.5vw,64px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 8px;">Academic programs</h1>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,3vw,28px);color:#a30000;margin:0 0 22px;">课程体系</p>
+      <p style="font-size:19px;line-height:1.6;color:#54524d;margin:0;">From kindergarten to AP Chinese — a complete Chinese education, every Sunday in Charlotte.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section style="padding:80px 5%;background:#ffffff;">
+    <div style="max-width:880px;margin:0 auto;text-align:center;">
+      <p style="font-size:clamp(19px,2.4vw,24px);line-height:1.6;color:#24201a;margin:0;font-weight:500;">CCA offers <span style="color:#cc0000;">11 levels</span> of Chinese Home Language for heritage speakers, <span style="color:#cc0000;">4 levels</span> of Chinese as a Second Language, plus <span style="color:#cc0000;">7 enrichment</span> classes — all on Sundays at Providence Day School. Minimum age 5 by September 1.</p>
+    </div>
+  </section>
+
+  <!-- CHL FEATURE -->
+  <section style="padding:72px 5% 32px;background:#ffffff;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <span style="display:inline-block;padding:5px 14px;border-radius:6px;background:#e8edf6;color:#1f4ea6;font-weight:600;font-size:14px;margin-bottom:16px;">中文母语班 · For heritage speakers</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 14px;">Chinese Home Language (CHL)</h2>
+      <p style="font-size:18px;line-height:1.65;color:#54524d;margin:0;max-width:760px;">For students who already speak Chinese at home. Eleven sequential levels using simplified characters and Pinyin, building reading, writing, and fluency. Sundays, 9–11 AM.</p>
+    </div>
+  </section>
+
+  <!-- CHL TABLE -->
+  <section style="padding:24px 5% 72px;background:#ffffff;">
+    <div style="max-width:1280px;margin:0 auto;border:1px solid rgba(12,8,1,0.12);border-radius:8px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:160px 160px 1fr;background:#0c0801;color:#ffffff;font-family:'Sora',sans-serif;font-weight:600;font-size:15px;">
+        <div style="padding:16px 20px;">Level</div>
+        <div style="padding:16px 20px;">Grade</div>
+        <div style="padding:16px 20px;">Focus</div>
+      </div>
+      <sc-for list="{{ chl }}" as="r" hint-placeholder-count="11">
+        <div style="display:grid;grid-template-columns:160px 160px 1fr;border-top:1px solid rgba(12,8,1,0.08);background:{{ r.bg }};">
+          <div style="padding:14px 20px;font-weight:600;color:#cc0000;">{{ r.level }}</div>
+          <div style="padding:14px 20px;color:#0c0801;">{{ r.grade }}</div>
+          <div style="padding:14px 20px;color:#54524d;font-size:15px;">{{ r.focus }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CSL FEATURE -->
+  <section style="padding:48px 5% 32px;background:#f2f2f2;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <span style="display:inline-block;padding:5px 14px;border-radius:6px;background:#e6f0ed;color:#0b6e4f;font-weight:600;font-size:14px;margin-bottom:16px;">中文第二语言班 · For new learners</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 14px;">Chinese as a Second Language (CSL)</h2>
+      <p style="font-size:18px;line-height:1.65;color:#54524d;margin:0;max-width:760px;">For students learning Mandarin as a new language. Four levels in small classes focused on speaking, listening, and foundational literacy. Sundays, 9–11 AM.</p>
+    </div>
+  </section>
+
+  <!-- CSL TABLE -->
+  <section style="padding:24px 5% 80px;background:#f2f2f2;">
+    <div style="max-width:1280px;margin:0 auto;border:1px solid rgba(12,8,1,0.12);border-radius:8px;overflow:hidden;background:#ffffff;">
+      <div style="display:grid;grid-template-columns:160px 160px 1fr;background:#0c0801;color:#ffffff;font-family:'Sora',sans-serif;font-weight:600;font-size:15px;">
+        <div style="padding:16px 20px;">Level</div>
+        <div style="padding:16px 20px;">Stage</div>
+        <div style="padding:16px 20px;">Focus</div>
+      </div>
+      <sc-for list="{{ csl }}" as="r" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:160px 160px 1fr;border-top:1px solid rgba(12,8,1,0.08);">
+          <div style="padding:14px 20px;font-weight:600;color:#0b6e4f;">{{ r.level }}</div>
+          <div style="padding:14px 20px;color:#0c0801;">{{ r.grade }}</div>
+          <div style="padding:14px 20px;color:#54524d;font-size:15px;">{{ r.focus }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ENRICHMENT -->
+  <section style="padding:80px 5%;background:#ffffff;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Enrichment · 才艺课程</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4.5vw,48px);line-height:1.15;margin:0;">More than language</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <sc-for list="{{ enrichment }}" as="e" hint-placeholder-count="7">
+          <div style="border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:28px 24px;">
+            <div style="width:52px;height:52px;border-radius:12px;background:{{ e.color }};display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:#ffffff;margin-bottom:18px;">{{ e.char }}</div>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:18px;margin:0 0 2px;">{{ e.name }}</h3>
+            <p style="font-size:14px;color:#858380;margin:0;">{{ e.zh }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p style="text-align:center;font-size:15px;color:#858380;margin:28px 0 0;">Enrichment classes meet Sundays, 11 AM–1 PM.</p>
+    </div>
+  </section>
+
+  <!-- EXAMS -->
+  <section style="padding:80px 5%;background:#f2f2f2;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Exams · 汉语水平考试</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4.5vw,48px);line-height:1.15;margin:0;">Chinese proficiency exams</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:40px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:28px;color:#cc0000;margin-bottom:12px;">YCT</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;margin:0 0 10px;">Youth Chinese Test 青少年汉语考试</h3>
+          <p style="font-size:16px;line-height:1.65;color:#54524d;margin:0;">An international standardized test designed for younger learners. CCA provides preparation and on-site registration.</p>
+        </div>
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:40px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:28px;color:#cc0000;margin-bottom:12px;">HSK</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;margin:0 0 10px;">Hanyu Shuiping Kaoshi 汉语水平考试</h3>
+          <p style="font-size:16px;line-height:1.65;color:#54524d;margin:0;">The standard international Chinese proficiency exam. We prepare students across levels and handle registration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section style="padding:80px 5%;background:#ffffff;">
+    <div style="max-width:880px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Schedule · 上课时间表</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0;">Every Sunday</h2>
+      </div>
+      <div style="border:1px solid rgba(12,8,1,0.12);border-radius:8px;overflow:hidden;">
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:220px 1fr;border-top:1px solid rgba(12,8,1,0.08);">
+            <div style="padding:20px 24px;font-family:'Sora',sans-serif;font-weight:700;color:#cc0000;background:#f9e5e5;">{{ s.time }}</div>
+            <div style="padding:20px 24px;">
+              <div style="font-weight:600;color:#0c0801;font-size:17px;">{{ s.name }}</div>
+              <div style="font-size:15px;color:#54524d;">{{ s.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const shade = (i) => (i % 2 === 1 ? "#faf6f6" : "#ffffff");
+    const chlData = [
+      ["CHL01", "K–1", "Pinyin foundations, basic characters, listening and speaking"],
+      ["CHL02", "Grade 1", "Core characters, simple sentences, classroom Chinese"],
+      ["CHL03", "Grade 2", "Reading short passages, writing strokes and radicals"],
+      ["CHL04", "Grade 3", "Paragraph reading, guided writing, vocabulary growth"],
+      ["CHL05", "Grade 4", "Comprehension, composition, idioms introduction"],
+      ["CHL06", "Grade 5", "Longer texts, structured essays, cultural readings"],
+      ["CHL07", "Grade 6", "Literary excerpts, analytical writing, expanded vocabulary"],
+      ["CHL08", "Grade 7", "Essays, classical phrases, discussion and debate"],
+      ["CHL09", "Grade 8", "Advanced composition, reading fluency, presentation"],
+      ["CHL10", "Grades 9–10", "Pre-AP reading and writing, exam strategies"],
+      ["CHL11", "Grades 11–12", "AP Chinese preparation, fluency and culture mastery"],
+    ];
+    const chl = chlData.map((r, i) => ({ level: r[0], grade: r[1], focus: r[2], bg: shade(i) }));
+    const csl = [
+      { level: "CSL01", grade: "Beginner", focus: "Pinyin, greetings, numbers, everyday phrases" },
+      { level: "CSL02", grade: "Elementary", focus: "Common characters, short dialogues, basic reading" },
+      { level: "CSL03", grade: "Intermediate", focus: "Sentence patterns, short paragraphs, conversation" },
+      { level: "CSL04", grade: "Upper Intermediate", focus: "Reading comprehension, structured writing, fluency" },
+    ];
+    const enrichment = [
+      { name: "Chinese Dance", zh: "中国舞", char: "舞", color: "#cc0000" },
+      { name: "Painting & Art", zh: "绘画", char: "画", color: "#f29e1d" },
+      { name: "Chess", zh: "象棋", char: "棋", color: "#1f4ea6" },
+      { name: "Math Olympiad", zh: "数学", char: "数", color: "#0b6e4f" },
+      { name: "Lion Dance", zh: "舞狮", char: "狮", color: "#a30000" },
+      { name: "Kung Fu", zh: "功夫", char: "武", color: "#183e84" },
+      { name: "Calligraphy", zh: "书法", char: "书", color: "#c17e17" },
+    ];
+    const schedule = [
+      { time: "9:00 – 11:00 AM", name: "Language classes 语言课", desc: "Chinese Home Language (CHL) and Chinese as a Second Language (CSL)" },
+      { time: "11:00 – 11:15 AM", name: "Break 课间休息", desc: "Snack and transition between language and enrichment" },
+      { time: "11:00 AM – 1:00 PM", name: "Enrichment classes 才艺课", desc: "Dance, art, chess, math, lion dance, kung fu, calligraphy" },
+    ];
+    return { chl, csl, enrichment, schedule };
+  }
+}
+</script>
+</body>
+</html>

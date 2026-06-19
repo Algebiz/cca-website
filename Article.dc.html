@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"Sora";font-weight:600;font-display:swap;src:url("assets/fonts/sora-600.woff2") format("woff2");}
+@font-face{font-family:"Sora";font-weight:700;font-display:swap;src:url("assets/fonts/sora-700.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url("assets/fonts/inter-400.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url("assets/fonts/inter-500.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
+*{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
+</style>
+<script src="news-data.js"></script>
+</helmet>
+<div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;">
+  <dc-import name="Navbar" active="news" hint-size="100%,72px"></dc-import>
+
+  <article>
+    <!-- POST HEADER -->
+    <section style="padding:64px 5% 40px;background:#ffffff;">
+      <div style="max-width:820px;margin:0 auto;text-align:center;">
+        <a href="News.dc.html" style="display:inline-block;color:#858380;font-size:15px;text-decoration:none;margin-bottom:24px;">← Back to news 返回新闻</a>
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;">
+          <span style="padding:5px 12px;border-radius:6px;background:{{ tagBg }};color:{{ tagColor }};font-size:14px;font-weight:600;">{{ categoryLabel }}</span>
+          <span style="font-size:14px;color:#858380;">{{ date }} · {{ readTime }}</span>
+        </div>
+        <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.12;letter-spacing:-0.02em;margin:0 0 12px;">{{ title }}</h1>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,3vw,28px);color:#858380;margin:0 0 24px;">{{ titleZh }}</h2>
+        <p style="font-size:15px;color:#54524d;margin:0;">By Charlotte Chinese Academy · 夏洛特中文学校</p>
+      </div>
+    </section>
+
+    <section style="padding:0 5% 8px;background:#ffffff;">
+      <div style="max-width:980px;margin:0 auto;">
+        <img src="{{ image }}" alt="" style="width:100%;height:clamp(280px,42vw,520px);object-fit:cover;border-radius:10px;display:block;" />
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section style="padding:48px 5% 80px;background:#ffffff;">
+      <div style="max-width:800px;margin:0 auto;">
+        <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="4">
+          <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}">
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:36px 0 14px;">{{ b.h }}</h3>
+          </sc-if>
+          <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:0 0 22px;">
+              <p style="font-size:18px;line-height:1.75;color:#24201a;margin:0 0 8px;">{{ b.p }}</p>
+              <p style="font-size:16px;line-height:1.85;color:#858380;margin:0;">{{ b.pZh }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:0 0 24px;">
+              <ul style="margin:0 0 10px;padding-left:24px;">
+                <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+                  <li style="font-size:18px;line-height:1.7;color:#24201a;margin-bottom:6px;">{{ it }}</li>
+                </sc-for>
+              </ul>
+              <ul style="margin:0;padding-left:24px;">
+                <sc-for list="{{ b.itemsZh }}" as="it" hint-placeholder-count="3">
+                  <li style="font-size:15px;line-height:1.7;color:#858380;margin-bottom:4px;">{{ it }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-if>
+        </sc-for>
+      </div>
+    </section>
+  </article>
+
+  <!-- RELATED -->
+  <section style="padding:80px 5%;background:#f2f2f2;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.5vw,40px);line-height:1.15;margin:0 0 40px;">More from CCA 更多新闻</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+        <sc-for list="{{ related }}" as="post" hint-placeholder-count="3">
+          <a href="{{ post.href }}" style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;">
+            <img src="{{ post.image }}" alt="" style="width:100%;height:190px;object-fit:cover;display:block;" />
+            <div style="padding:22px;display:flex;flex-direction:column;flex:1;">
+              <span style="font-size:13px;color:#858380;margin-bottom:8px;">{{ post.date }}</span>
+              <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:18px;line-height:1.3;margin:0 0 12px;">{{ post.title }}</h3>
+              <span style="margin-top:auto;color:#cc0000;font-weight:600;font-size:15px;">Read more 阅读更多 →</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="padding:88px 5%;background:#ffffff;">
+    <div style="max-width:560px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.12;margin:0 0 8px;">Stay connected 订阅邮件</h2>
+      <p style="font-size:18px;line-height:1.6;color:#54524d;margin:0 0 28px;">Get CCA news, events, and updates direct to your inbox.</p>
+      <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:12px;text-align:left;">
+        <input type="text" placeholder="Your name 姓名" style="padding:13px 16px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;" />
+        <div style="display:flex;gap:10px;">
+          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="Your email 邮箱" style="flex:1;padding:13px 16px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;" />
+          <button type="submit" style="padding:13px 24px;border:none;border-radius:6px;background:#cc0000;color:#ffffff;font-weight:600;font-size:16px;font-family:'Inter',sans-serif;white-space:nowrap;">Subscribe</button>
+        </div>
+      </form>
+      <p style="font-size:14px;color:#858380;margin:14px 0 0;">{{ subscribeNote }}</p>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { news: [], id: "", tries: 0, email: "", sent: false };
+
+  componentDidMount() {
+    let id = "";
+    try { id = new URLSearchParams(window.location.search).get("id") || ""; } catch (e) {}
+    this.setState({ id });
+    this._load();
+  }
+  _load() {
+    if (window.CCA_NEWS) { this.setState({ news: window.CCA_NEWS }); return; }
+    if (this.state.tries < 40) {
+      this.setState(s => ({ tries: s.tries + 1 }));
+      setTimeout(() => this._load(), 50);
+    }
+  }
+  _cat(cat) {
+    if (cat === "Event") return { tagBg: "#fdf5e8", tagColor: "#c17e17", label: "Event 活动" };
+    if (cat === "News") return { tagBg: "#e6f0ed", tagColor: "#0b6e4f", label: "News 新闻" };
+    return { tagBg: "#f9e5e5", tagColor: "#cc0000", label: "Announcement 公告" };
+  }
+
+  renderVals() {
+    const news = this.state.news || [];
+    const article = news.find(a => a.id === this.state.id) || news[0] || null;
+    const empty = { title: "", titleZh: "", date: "", readTime: "", image: "assets/images/classroom.jpg", categoryLabel: "", tagBg: "#f9e5e5", tagColor: "#cc0000", blocks: [], related: [] };
+    const base = {
+      email: this.state.email,
+      onEmail: (e) => this.setState({ email: e.target.value, sent: false }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      subscribeNote: this.state.sent ? "Thanks for subscribing! 订阅成功。" : "We respect your privacy. Unsubscribe anytime.",
+    };
+    if (!article) return { ...empty, ...base };
+
+    const c = this._cat(article.category);
+    const blocks = (article.body || []).map(b => ({
+      isH: b.h != null, h: b.h || "",
+      isP: b.p != null, p: b.p || "", pZh: b.pZh || "",
+      isList: Array.isArray(b.list), items: b.list || [], itemsZh: b.listZh || [],
+    }));
+    const related = news.filter(a => a.id !== article.id)
+      .sort((a) => (a.category === article.category ? -1 : 1))
+      .slice(0, 3)
+      .map(a => ({ href: "Article.dc.html?id=" + a.id, image: a.image, date: a.date, title: a.title }));
+
+    return {
+      ...base,
+      title: article.title, titleZh: article.titleZh,
+      date: article.date, readTime: article.readTime, image: article.image,
+      categoryLabel: c.label, tagBg: c.tagBg, tagColor: c.tagColor,
+      blocks, related,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"Sora";font-weight:600;font-display:swap;src:url("assets/fonts/sora-600.woff2") format("woff2");}
+@font-face{font-family:"Sora";font-weight:700;font-display:swap;src:url("assets/fonts/sora-700.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url("assets/fonts/inter-400.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url("assets/fonts/inter-500.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
+</style>
+</helmet>
+<footer style="background:#0c0801;color:#dad9d8;font-family:'Inter',sans-serif;padding:64px 5% 32px;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.12);">
+      <div style="max-width:360px;">
+        <h2 style="font-family:'Sora',sans-serif;font-weight:600;font-size:20px;color:#ffffff;margin:0 0 8px;">Stay connected 加入邮件组</h2>
+        <p style="margin:0;font-size:15px;color:#b6b4b2;line-height:1.5;">Get announcements, events, and registration reminders straight to your inbox.</p>
+      </div>
+      <div style="min-width:300px;flex:1;max-width:420px;">
+        <form onSubmit="{{ onSubmit }}" style="display:flex;gap:10px;">
+          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="Your email 邮箱" style="flex:1;padding:12px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#ffffff;font-size:15px;font-family:'Inter',sans-serif;" />
+          <button type="submit" style="padding:12px 20px;border:none;border-radius:6px;background:#cc0000;color:#ffffff;font-weight:600;font-size:15px;font-family:'Inter',sans-serif;white-space:nowrap;">Subscribe</button>
+        </form>
+        <p style="margin:10px 0 0;font-size:12px;color:#858380;">{{ subscribeNote }}</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px;padding:48px 0;">
+      <div>
+        <a href="Home.dc.html" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;">
+          <span style="flex:none;width:48px;height:48px;border-radius:50%;background:#ffffff;display:flex;align-items:center;justify-content:center;"><img src="assets/logo.jpg" alt="CCA" style="width:42px;height:42px;border-radius:50%;display:block;object-fit:cover;" /></span>
+          <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#ffffff;">Charlotte Chinese Academy</span>
+        </a>
+        <p style="margin:0;font-size:13px;color:#858380;line-height:1.6;">501(c)(3) nonprofit Chinese school. Founded 1996. Classes every Sunday at Providence Day School, Charlotte NC.</p>
+        <div style="display:flex;gap:10px;margin-top:18px;">
+          <a href="#" aria-label="Facebook" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#dad9d8;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:14px;">f</a>
+          <a href="#" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#dad9d8;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:13px;">ig</a>
+          <a href="#" aria-label="WeChat" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#dad9d8;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:13px;">微</a>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#ffffff;margin:0 0 14px;">About</h3>
+        <a href="About.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Our story</a>
+        <a href="About.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">School council</a>
+        <a href="About.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Locations</a>
+        <a href="Contact.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Contact us</a>
+      </div>
+      <div>
+        <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#ffffff;margin:0 0 14px;">Academics</h3>
+        <a href="Academics.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Language classes</a>
+        <a href="Academics.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Enrichment</a>
+        <a href="Academics.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Exam prep</a>
+        <a href="Academics.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Schedule</a>
+      </div>
+      <div>
+        <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#ffffff;margin:0 0 14px;">Admissions</h3>
+        <a href="Admissions.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">How to register</a>
+        <a href="Admissions.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Tuition &amp; fees</a>
+        <a href="Admissions.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Placement guide</a>
+        <a href="Admissions.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Policies</a>
+      </div>
+      <div>
+        <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#ffffff;margin:0 0 14px;">Community</h3>
+        <a href="News.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">News &amp; events</a>
+        <a href="Volunteer.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Volunteer</a>
+        <a href="Donate.dc.html" style="display:block;padding:6px 0;font-size:14px;color:#b6b4b2;text-decoration:none;">Donate</a>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:24px;">
+      <p style="margin:0;font-size:13px;color:#858380;">© 2026 Charlotte Chinese Academy · 夏洛特中文学校 · EIN on file</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:13px;color:#858380;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="font-size:13px;color:#858380;text-decoration:none;">Terms of use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:520}}">
+class Component extends DCLogic {
+  state = { email: "", sent: false };
+  renderVals() {
+    return {
+      email: this.state.email,
+      onEmail: (e) => this.setState({ email: e.target.value, sent: false }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      subscribeNote: this.state.sent
+        ? "Thanks! Send a blank email to cca_nc+subscribe@googlegroups.com to confirm."
+        : "We respect your privacy. Unsubscribe anytime.",
+    };
+  }
+}
+</script>
+</body>
+</html>

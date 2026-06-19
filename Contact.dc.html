@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"Sora";font-weight:600;font-display:swap;src:url("assets/fonts/sora-600.woff2") format("woff2");}
+@font-face{font-family:"Sora";font-weight:700;font-display:swap;src:url("assets/fonts/sora-700.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url("assets/fonts/inter-400.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url("assets/fonts/inter-500.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
+*{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
+</style>
+</helmet>
+<div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;">
+  <dc-import name="Navbar" active="contact" hint-size="100%,72px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background:#f9e5e5;padding:96px 5% 84px;">
+    <div style="max-width:820px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Contact · 联系我们</p>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(36px,5.5vw,64px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 8px;">Contact us</h1>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,3vw,28px);color:#a30000;margin:0 0 22px;">联系我们</p>
+      <p style="font-size:19px;line-height:1.6;color:#54524d;margin:0;">Have a question? Reach out and we'll respond within 2 business days.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section style="padding:56px 5% 16px;background:#ffffff;">
+    <div style="max-width:880px;margin:0 auto;text-align:center;">
+      <p style="font-size:clamp(17px,2.2vw,21px);line-height:1.6;color:#24201a;margin:0;font-weight:500;">Email us at <span style="color:#cc0000;">general@charlottechineseacademy.org</span>. Classes meet Sundays 9 AM–1 PM at Providence Day School, 5800 Sardis Road, Charlotte, NC 28270. Mailing: P.O. Box 78314, Charlotte, NC 28271.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM + INFO -->
+  <section style="padding:64px 5% 80px;background:#ffffff;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;">
+      <div>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#ffffff;border:1px solid rgba(11,110,79,0.4);border-radius:12px;padding:48px;text-align:center;">
+            <div style="width:60px;height:60px;border-radius:50%;background:#0b6e4f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px;">✓</div>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:24px;margin:0 0 10px;">Thank you!</h3>
+            <p style="font-size:17px;color:#54524d;margin:0;">We'll respond within 2 business days. 感谢您的留言，我们会在两个工作日内回复。</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="background:#ffffff;border:1px solid rgba(12,8,1,0.12);border-radius:12px;padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:18px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <label style="display:block;font-weight:600;font-size:14px;margin-bottom:6px;">Full name 姓名</label>
+                <input type="text" required style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;" />
+              </div>
+              <div>
+                <label style="display:block;font-weight:600;font-size:14px;margin-bottom:6px;">Email 邮箱</label>
+                <input type="email" required style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;" />
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;font-size:14px;margin-bottom:6px;">Phone (optional) 电话（选填）</label>
+              <input type="tel" style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;font-size:14px;margin-bottom:6px;">Subject 主题</label>
+              <select style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;background:#ffffff;">
+                <option>General 一般咨询</option>
+                <option>Registration 报名</option>
+                <option>Class change 调课</option>
+                <option>Exam 考试</option>
+                <option>Volunteer 志愿者</option>
+                <option>Donation 捐赠</option>
+                <option>Tech support 技术支持</option>
+                <option>Other 其他</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;font-size:14px;margin-bottom:6px;">Message 留言</label>
+              <textarea rows="5" required style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;resize:vertical;"></textarea>
+            </div>
+            <button type="submit" style="padding:15px;border:none;border-radius:6px;background:#cc0000;color:#ffffff;font-weight:700;font-size:17px;font-family:'Inter',sans-serif;">Send message 发送留言</button>
+          </form>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="5">
+          <div style="padding:22px 24px;border:1px solid rgba(12,8,1,0.1);border-radius:8px;">
+            <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#cc0000;margin-bottom:6px;">{{ i.label }}</div>
+            <div style="font-size:16px;line-height:1.55;color:#24201a;">{{ i.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section style="padding:0 5% 80px;background:#ffffff;">
+    <div style="max-width:1180px;margin:0 auto;border-radius:10px;overflow:hidden;border:1px solid rgba(12,8,1,0.1);background:#f2f2f2;">
+      <iframe title="CCA location map" src="https://maps.google.com/maps?q=5800%20Sardis%20Road%20Charlotte%20NC%2028270&output=embed" style="width:100%;height:420px;border:0;display:block;" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="padding:88px 5%;background:#f2f2f2;">
+    <div style="max-width:720px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4.5vw,48px);line-height:1.12;margin:0 0 8px;">Stay connected</h2>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;color:#858380;margin:0 0 22px;">加入我们的社区邮件群</p>
+      <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.12);border-radius:8px;padding:24px 28px;display:inline-block;">
+        <p style="margin:0;font-size:16px;color:#54524d;">Send a blank email to</p>
+        <p style="margin:6px 0 0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#cc0000;word-break:break-all;">cca_nc+subscribe@googlegroups.com</p>
+        <p style="margin:6px 0 0;font-size:14px;color:#858380;">发送空白邮件即可加入邮件组</p>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Faq" title="Contact — FAQ" subtitle="Quick answers before you reach out 联系前的常见问题" bg="#ffffff" items="{{ faqItems }}" hint-size="100%,640px"></dc-import>
+
+  <dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { submitted: false };
+  renderVals() {
+    const info = [
+      { label: "Email 邮箱", value: "general@charlottechineseacademy.org" },
+      { label: "Mailing 邮寄地址", value: "P.O. Box 78314, Charlotte, NC 28271" },
+      { label: "Location 上课地点", value: "Providence Day School, 5800 Sardis Road, Charlotte, NC 28270" },
+      { label: "Hours 上课时间", value: "Sundays, 9:00 AM – 1:00 PM" },
+      { label: "Response time 回复时间", value: "Within 2 business days" },
+    ];
+    const faqItems = [
+      { q: "How do I contact CCA?", a: "Email us at general@charlottechineseacademy.org or use the form on this page. We read every message.", aZh: "请发邮件至 general@charlottechineseacademy.org 或使用本页表单联系我们。" },
+      { q: "How quickly will CCA respond?", a: "We aim to respond within 2 business days. During busy registration periods it may take a little longer.", aZh: "我们通常在两个工作日内回复，报名高峰期可能稍有延迟。" },
+      { q: "Where is CCA located?", a: "Classes are held at Providence Day School, 5800 Sardis Road, Charlotte, NC 28270, every Sunday.", aZh: "上课地点为 Providence Day School，5800 Sardis Road, Charlotte, NC 28270。" },
+      { q: "How do I join the email group?", a: "Send a blank email to cca_nc+subscribe@googlegroups.com to join and receive school announcements.", aZh: "发送空白邮件至 cca_nc+subscribe@googlegroups.com 即可加入邮件组。" },
+      { q: "What are CCA's class hours?", a: "Language classes run 9–11 AM and enrichment classes 11 AM–1 PM, every Sunday.", aZh: "语言课为上午9–11点，才艺课为上午11点至下午1点，每周日上课。" },
+    ];
+    return {
+      info, faqItems,
+      submitted: this.state.submitted,
+      showForm: !this.state.submitted,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section style="font-family:'Inter',sans-serif;background:{{ bg }};padding:88px 5%;color:#0c0801;">
+  <div style="max-width:768px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.15;letter-spacing:-0.01em;margin:0 0 16px;">{{ title }}</h2>
+      <p style="margin:0;font-size:18px;color:#54524d;line-height:1.5;">{{ subtitle }}</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <sc-for list="{{ rows }}" as="row" hint-placeholder-count="5">
+        <div style="border:1px solid rgba(12,8,1,0.12);border-radius:8px;background:#ffffff;overflow:hidden;">
+          <button onClick="{{ row.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:none;border:none;padding:22px 24px;font-family:'Sora',sans-serif;font-weight:600;font-size:18px;color:#0c0801;">
+            <span>{{ row.q }}</span>
+            <span style="flex:none;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:300;color:#cc0000;line-height:1;transition:transform 0.25s ease;transform:rotate({{ row.rotate }});">+</span>
+          </button>
+          <sc-if value="{{ row.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 24px 24px;">
+              <p style="margin:0;font-size:16px;line-height:1.65;color:#54524d;">{{ row.a }}</p>
+              <sc-if value="{{ row.aZh }}" hint-placeholder-val="">
+                <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#858380;">{{ row.aZh }}</p>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:640},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Frequently asked questions 常见问题&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Common questions about Charlotte Chinese Academy&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;bg&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:null,&quot;default&quot;:[],&quot;tsType&quot;:&quot;{q:string;a:string;aZh?:string}[]&quot;}}">
+class Component extends DCLogic {
+  state = { open: {} };
+  renderVals() {
+    const items = Array.isArray(this.props.items) ? this.props.items : [];
+    const open = this.state.open;
+    const rows = items.map((it, i) => ({
+      q: it.q,
+      a: it.a,
+      aZh: it.aZh || "",
+      open: !!open[i],
+      rotate: open[i] ? "45deg" : "0deg",
+      toggle: () => this.setState(s => ({ open: { ...s.open, [i]: !s.open[i] } })),
+    }));
+    return {
+      rows,
+      title: this.props.title || "FAQ",
+      subtitle: this.props.subtitle || "",
+      bg: this.props.bg || "#ffffff",
+    };
+  }
+}
+</script>
+</body>
+</html>
