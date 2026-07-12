@@ -70,6 +70,24 @@
               </ul>
             </div>
           </sc-if>
+          <sc-if value="{{ b.isImage }}" hint-placeholder-val="{{ false }}">
+            <figure style="margin:0 0 28px;">
+              <img src="{{ b.imageUrl }}" alt="{{ b.caption }}" style="width:100%;border-radius:8px;display:block;" />
+              <sc-if value="{{ b.caption }}" hint-placeholder-val="{{ false }}">
+                <figcaption style="font-size:14px;color:#858380;margin-top:8px;text-align:center;">{{ b.caption }}</figcaption>
+              </sc-if>
+            </figure>
+          </sc-if>
+          <sc-if value="{{ b.isVideo }}" hint-placeholder-val="{{ false }}">
+            <figure style="margin:0 0 28px;">
+              <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+                <iframe src="{{ b.videoUrl }}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <sc-if value="{{ b.caption }}" hint-placeholder-val="{{ false }}">
+                <figcaption style="font-size:14px;color:#858380;margin-top:8px;text-align:center;">{{ b.caption }}</figcaption>
+              </sc-if>
+            </figure>
+          </sc-if>
         </sc-for>
       </div>
     </section>
@@ -153,6 +171,8 @@ class Component extends DCLogic {
       isH: b.h != null, h: b.h || "",
       isP: b.p != null, p: b.p || "", pZh: b.pZh || "",
       isList: Array.isArray(b.list), items: b.list || [], itemsZh: b.listZh || [],
+      isImage: b.type === "image", imageUrl: b.imageUrl || "", caption: b.caption || "",
+      isVideo: b.type === "video", videoUrl: b.videoUrl || "",
     }));
     const related = news.filter(a => a.id !== article.id)
       .sort((a) => (a.category === article.category ? -1 : 1))

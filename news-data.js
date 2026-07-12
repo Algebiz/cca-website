@@ -7,7 +7,7 @@
       var docs = data.docs || [];
       window.CCA_NEWS = docs.map(function (a) {
         return {
-          id: a.id,
+          id: a.slug,
           category: a.category,
           categoryZh: a.categoryZh,
           date: a.date,
@@ -24,6 +24,20 @@
                 type: "bullets",
                 list:   (b.list   || []).map(function (x) { return x.item; }),
                 listZh: (b.listZh || []).map(function (x) { return x.item; }),
+              };
+            }
+            if (type === "image") {
+              return {
+                type: "image",
+                imageUrl: b.image && b.image.url ? b.image.url : "",
+                caption: b.caption || "",
+              };
+            }
+            if (type === "video") {
+              return {
+                type: "video",
+                videoUrl: b.videoUrl || "",
+                caption: b.caption || "",
               };
             }
             return Object.assign({ type: type }, b);
