@@ -10,7 +10,7 @@
           id: a.slug,
           category: a.category,
           categoryZh: a.categoryZh,
-          date: a.date,
+          date: a.date ? new Date(a.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : "",
           readTime: a.readTime,
           image: a.image && a.image.url ? a.image.url : "",
           title: a.title,
