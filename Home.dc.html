@@ -17,6 +17,7 @@
 @font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
 *{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
 </style>
+<script src="news-data.js"></script>
 </helmet>
 <div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;">
   <dc-import name="Navbar" active="home" hint-size="100%,72px"></dc-import>
@@ -170,18 +171,45 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
 class Component extends DCLogic {
+  state = { news: [], tries: 0 };
+
+  componentDidMount() {
+    this._load();
+  }
+  _load() {
+    if (window.CCA_NEWS) { this.setState({ news: window.CCA_NEWS }); return; }
+    if (this.state.tries < 40) {
+      this.setState(s => ({ tries: s.tries + 1 }));
+      setTimeout(() => this._load(), 50);
+    }
+  }
+  _tagStyle(cat) {
+    if (cat === "Event") return { tagBg: "#fdf5e8", tagColor: "#c17e17" };
+    if (cat === "News") return { tagBg: "#e6f0ed", tagColor: "#0b6e4f" };
+    return { tagBg: "#f9e5e5", tagColor: "#cc0000" };
+  }
+
   renderVals() {
-    const newsCards = [
-      { href: "Article.dc.html?id=registration-open", image: "assets/images/youth-group.jpg", category: "Announcement", tagBg: "#f9e5e5", tagColor: "#cc0000", date: "Apr 1, 2026", title: "2026–2027 registration is now open", excerpt: "Enroll new and returning students online in under 15 minutes. Classes fill quickly." },
-      { href: "Article.dc.html?id=spring-festival", image: "assets/images/perf-stage.jpg", category: "Event", tagBg: "#fdf5e8", tagColor: "#c17e17", date: "Feb 18, 2026", title: "Spring Festival celebration brings 400+ together", excerpt: "Lion dance, performances, and dumplings filled the gym for our biggest event of the year." },
-      { href: "Article.dc.html?id=hsk-results", image: "assets/images/classroom.jpg", category: "News", tagBg: "#e6f0ed", tagColor: "#0b6e4f", date: "Mar 9, 2026", title: "CCA students shine at HSK & YCT exams", excerpt: "Dozens of students earned proficiency certifications this spring across all levels." },
-    ];
+    const news = this.state.news || [];
+    const newsCards = news.slice(0, 3).map(a => {
+      const t = this._tagStyle(a.category);
+      return {
+        href: "Article.dc.html?id=" + a.id,
+        image: a.image || "assets/images/classroom.jpg",
+        category: a.category,
+        tagBg: t.tagBg,
+        tagColor: t.tagColor,
+        date: a.date,
+        title: a.title,
+        excerpt: a.excerpt || "",
+      };
+    });
     const faqItems = [
       { q: "What grades does CCA serve?", a: "CCA serves students from kindergarten through grade 12, with 11 levels of Chinese heritage language and 4 levels of Chinese as a second language so every student is placed appropriately.", aZh: "我们招收幼儿园至十二年级学生，开设11个母语班级别和4个第二语言班级别。" },
       { q: "When and where are classes held?", a: "Classes meet every Sunday at Providence Day School, 5800 Sardis Road, Charlotte, NC. Language classes run 9–11 AM and enrichment classes 11 AM–1 PM.", aZh: "每周日在 Providence Day School 上课，语言课 9–11 点，才艺课 11 点–下午 1 点。" },
       { q: "How do I register?", a: "Registration opens each spring for the following year. Visit our Admissions page to complete the five-step online process. Early registration is recommended as classes fill quickly.", aZh: "每年春季开放报名，请在「招生报名」页面完成五步在线流程。" },
       { q: "How much is tuition?", a: "Tuition ranges from about $500–700 per year depending on program and classes. A detailed fee table is on our Admissions page, and financial assistance is available for families who qualify.", aZh: "学费约每年 $500–700，详见「招生报名」页面，并提供助学金。" },
-      { q: "Is CCA a nonprofit?", a: "Yes. Charlotte Chinese Academy is a 501(c)(3) nonprofit founded in 1996. All tuition and donations support our mission to preserve Chinese language and culture.", aZh: "是的，我们是成立于1999年的501(c)(3)非营利组织。" },
+      { q: "Is CCA a nonprofit?", a: "Yes. Charlotte Chinese Academy is a 501(c)(3) nonprofit founded in 1996. All tuition and donations support our mission to preserve Chinese language and culture.", aZh: "是的，我们是成立于1996年的501(c)(3)非营利组织。" },
       { q: "What Chinese programs are offered?", a: "Heritage language classes for native speakers, Chinese as a second language for new learners, enrichment in dance, art, chess and math, plus YCT and HSK exam prep. See the Academics page for all levels.", aZh: "母语班、第二语言班、才艺课程，以及 YCT/HSK 考试备考，详见「课程体系」。" },
     ];
     return { newsCards, faqItems };
