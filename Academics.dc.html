@@ -25,7 +25,7 @@
 .ac-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
 .ac-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 .ac-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-.ac-schedule-row{display:grid;grid-template-columns:200px 1fr;border-top:1px solid rgba(12,8,1,0.08);}
+.ac-schedule-row{display:grid;grid-template-columns:240px 1fr;border-top:1px solid rgba(12,8,1,0.08);}
 
 @media(max-width:768px){
   .ac-grid-3{grid-template-columns:1fr;}
@@ -217,8 +217,8 @@ class Component extends DCLogic {
       { name: "Calligraphy", zh: "书法", char: "书", color: "#c17e17" },
     ];
     const schedule = [
-      { time: "9:00 – 10:50 AM", name: "Language classes 语言课", desc: "Two sessions of Chinese Home Language (CHL) and Chinese as a Second Language (CSL)" },
-      { time: "10:50 – 11:00 AM", name: "Break 课间休息", desc: "Snack and transition between language and enrichment" },
+      { time: "9:00 AM – 10:50 AM", name: "Language classes 语言课", desc: "Two sessions of Chinese Home Language (CHL) and Chinese as a Second Language (CSL)" },
+      { time: "10:50 AM – 11:00 AM", name: "Break 课间休息", desc: "Snack and transition between language and enrichment" },
       { time: "11:00 AM – 12:00 PM", name: "Enrichment classes 才艺课", desc: "Dance, art, chess, math, lion dance, kung fu, calligraphy" },
     ];
     return { chl, csl, enrichment, schedule };
