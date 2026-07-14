@@ -14,26 +14,40 @@
 @font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url("assets/fonts/inter-400.woff2") format("woff2");}
 @font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url("assets/fonts/inter-500.woff2") format("woff2");}
 @font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
+
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr !important;}
+  .footer-brand{grid-column:1/-1;}
+  .footer-subscribe{flex-direction:column !important;}
+  .footer-subscribe input{width:100%;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr !important;}
+}
 </style>
 </helmet>
 <footer style="background:#0c0801;color:#dad9d8;font-family:'Inter',sans-serif;padding:64px 5% 32px;">
   <div style="max-width:1280px;margin:0 auto;">
+
+    <!-- Subscribe bar -->
     <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.12);">
       <div style="max-width:360px;">
         <h2 style="font-family:'Sora',sans-serif;font-weight:600;font-size:20px;color:#ffffff;margin:0 0 8px;">Stay connected 加入邮件组</h2>
         <p style="margin:0;font-size:15px;color:#b6b4b2;line-height:1.5;">Get announcements, events, and registration reminders straight to your inbox.</p>
       </div>
       <div style="min-width:300px;flex:1;max-width:420px;">
-        <form onSubmit="{{ onSubmit }}" style="display:flex;gap:10px;">
-          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="Your email 邮箱" style="flex:1;padding:12px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#ffffff;font-size:15px;font-family:'Inter',sans-serif;" />
-          <button type="submit" style="padding:12px 20px;border:none;border-radius:6px;background:#cc0000;color:#ffffff;font-weight:600;font-size:15px;font-family:'Inter',sans-serif;white-space:nowrap;">Subscribe</button>
+        <form onSubmit="{{ onSubmit }}" class="footer-subscribe" style="display:flex;gap:10px;">
+          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="Your email 邮箱" required style="flex:1;padding:12px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#ffffff;font-size:15px;font-family:'Inter',sans-serif;" />
+          <button type="submit" style="padding:12px 20px;border:none;border-radius:6px;background:#cc0000;color:#ffffff;font-weight:600;font-size:15px;font-family:'Inter',sans-serif;white-space:nowrap;">{{ submitLabel }}</button>
         </form>
         <p style="margin:10px 0 0;font-size:12px;color:#858380;">{{ subscribeNote }}</p>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px;padding:48px 0;">
-      <div>
+    <!-- Links grid -->
+    <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px;padding:48px 0;">
+      <div class="footer-brand">
         <a href="Home.dc.html" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;">
           <span style="flex:none;width:48px;height:48px;border-radius:50%;background:#ffffff;display:flex;align-items:center;justify-content:center;"><img src="assets/logo.jpg" alt="CCA" style="width:42px;height:42px;border-radius:50%;display:block;object-fit:cover;" /></span>
           <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#ffffff;">Charlotte Chinese Academy</span>
@@ -74,26 +88,40 @@
       </div>
     </div>
 
-    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:24px;">
+    <!-- Bottom bar -->
+    <div class="footer-bottom" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);">
       <p style="margin:0;font-size:13px;color:#858380;">© 2026 Charlotte Chinese Academy · 夏洛特中文学校 · EIN on file</p>
       <div style="display:flex;gap:20px;">
         <a href="#" style="font-size:13px;color:#858380;text-decoration:none;">Privacy policy</a>
         <a href="#" style="font-size:13px;color:#858380;text-decoration:none;">Terms of use</a>
       </div>
     </div>
+
   </div>
 </footer>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:520}}">
 class Component extends DCLogic {
-  state = { email: "", sent: false };
+  state = { email: "", sent: false, loading: false };
   renderVals() {
     return {
       email: this.state.email,
       onEmail: (e) => this.setState({ email: e.target.value, sent: false }),
-      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      submitLabel: this.state.loading ? "..." : "Subscribe",
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (this.state.loading || this.state.sent) return;
+        this.setState({ loading: true });
+        fetch('https://cca-forms-api.vercel.app/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: this.state.email }),
+        })
+        .then(() => this.setState({ sent: true, loading: false }))
+        .catch(() => this.setState({ sent: true, loading: false }));
+      },
       subscribeNote: this.state.sent
-        ? "Thanks! Send a blank email to cca_nc+subscribe@googlegroups.com to confirm."
+        ? "✓ Subscribed! Check your inbox for a confirmation. 订阅成功！"
         : "We respect your privacy. Unsubscribe anytime.",
     };
   }
