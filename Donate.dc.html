@@ -16,80 +16,96 @@
 @font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
 @font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
 *{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
+
+.don-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.don-uses{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.don-ways{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+
+@media(max-width:900px){
+  .don-split{grid-template-columns:1fr !important;gap:40px;}
+  .don-uses{grid-template-columns:1fr 1fr;}
+  .don-ways{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:540px){
+  .don-uses{grid-template-columns:1fr !important;}
+  .don-ways{grid-template-columns:1fr !important;}
+}
 </style>
 </helmet>
-<div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;">
+<div style="font-family:'Inter',sans-serif;color:#0c0801;background:#ffffff;overflow-x:hidden;">
   <dc-import name="Navbar" active="donate" hint-size="100%,72px"></dc-import>
 
   <!-- HERO -->
-  <section style="background:#f9e5e5;padding:96px 5% 84px;">
+  <section style="background:#f9e5e5;padding:72px 5% 64px;">
     <div style="max-width:820px;margin:0 auto;text-align:center;">
-      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Donate · 支持我们</p>
-      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(34px,5vw,60px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 8px;">Support Charlotte Chinese Academy</h1>
-      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(19px,2.8vw,26px);color:#a30000;margin:0 0 22px;">以您的支持，延续这份传承</p>
-      <p style="font-size:19px;line-height:1.6;color:#54524d;margin:0;">For 30 years CCA has preserved Chinese language and culture. Your donation keeps the mission alive.</p>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Donate · 支持我们</p>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,5vw,60px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 8px;">Support Charlotte Chinese Academy</h1>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(17px,2.8vw,26px);color:#a30000;margin:0 0 22px;">以您的支持，延续这份传承</p>
+      <p style="font-size:clamp(16px,2vw,19px);line-height:1.6;color:#54524d;margin:0;">For 30 years CCA has preserved Chinese language and culture. Your donation keeps the mission alive.</p>
     </div>
   </section>
 
   <!-- INTRO -->
-  <section style="padding:64px 5% 24px;background:#ffffff;">
+  <section style="padding:56px 5% 24px;background:#ffffff;">
     <div style="max-width:880px;margin:0 auto;text-align:center;">
-      <p style="font-size:clamp(18px,2.3vw,22px);line-height:1.6;color:#24201a;margin:0;font-weight:500;">CCA is a <span style="color:#cc0000;">501(c)(3) nonprofit</span> and donations are tax-deductible. Gifts fund teacher training, cultural events, and school operations. Give online below, or mail a check to P.O. Box 78314, Charlotte, NC 28271.</p>
+      <p style="font-size:clamp(16px,2.3vw,22px);line-height:1.6;color:#24201a;margin:0;font-weight:500;">CCA is a <span style="color:#cc0000;">501(c)(3) nonprofit</span> and donations are tax-deductible. Gifts fund teacher training, cultural events, and school operations. Give online below, or mail a check to P.O. Box 78314, Charlotte, NC 28271.</p>
     </div>
   </section>
 
   <!-- WHY + DONATION FORM -->
-  <section style="padding:64px 5% 80px;background:#ffffff;">
-    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
-      <div>
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Why your donation matters · 您的捐款，意义深远</p>
-        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,3.8vw,42px);line-height:1.15;margin:0 0 22px;">Every gift goes further than you'd think</h2>
-        <p style="font-size:17px;line-height:1.7;color:#54524d;margin:0 0 16px;">As a nonprofit, CCA fills the gap between tuition and the true cost of running the school with the generosity of donors like you.</p>
-        <p style="font-size:17px;line-height:1.7;color:#54524d;margin:0 0 16px;">Every dollar goes directly to teacher training, cultural events, and classroom materials — never to profit.</p>
-        <p style="font-size:17px;line-height:1.7;color:#54524d;margin:0 0 24px;">CCA is more than a school. It connects children to their heritage and keeps a community together.</p>
-        <div style="border:1px solid rgba(12,8,1,0.12);border-radius:8px;padding:18px 22px;background:#f2f2f2;">
-          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:16px;color:#0c0801;">Tax-deductible · 501(c)(3) · EIN on file</p>
-        </div>
-      </div>
-
-      <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.12);border-radius:12px;padding:36px;box-shadow:0 14px 40px rgba(12,8,1,0.06);">
-        <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:26px;margin:0 0 4px;">Make a donation</h3>
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:16px;color:#858380;margin:0 0 24px;">立即捐款</p>
-
-        <div style="display:flex;gap:8px;background:#f2f2f2;border-radius:8px;padding:5px;margin-bottom:24px;">
-          <sc-for list="{{ freqTabs }}" as="f" hint-placeholder-count="2">
-            <button onClick="{{ f.select }}" style="flex:1;padding:11px;border:none;border-radius:6px;background:{{ f.bg }};color:{{ f.color }};font-family:'Inter',sans-serif;font-weight:600;font-size:15px;">{{ f.label }}</button>
-          </sc-for>
+  <section style="padding:56px 5% 72px;background:#ffffff;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div class="don-split">
+        <div>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Why your donation matters · 您的捐款，意义深远</p>
+          <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,3.8vw,42px);line-height:1.15;margin:0 0 22px;">Every gift goes further than you'd think</h2>
+          <p style="font-size:clamp(15px,2vw,17px);line-height:1.7;color:#54524d;margin:0 0 16px;">As a nonprofit, CCA fills the gap between tuition and the true cost of running the school with the generosity of donors like you.</p>
+          <p style="font-size:clamp(15px,2vw,17px);line-height:1.7;color:#54524d;margin:0 0 16px;">Every dollar goes directly to teacher training, cultural events, and classroom materials — never to profit.</p>
+          <p style="font-size:clamp(15px,2vw,17px);line-height:1.7;color:#54524d;margin:0 0 24px;">CCA is more than a school. It connects children to their heritage and keeps a community together.</p>
+          <div style="border:1px solid rgba(12,8,1,0.12);border-radius:8px;padding:16px 20px;background:#f2f2f2;">
+            <p style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#0c0801;">Tax-deductible · 501(c)(3) · EIN on file</p>
+          </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;">
-          <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="4">
-            <button onClick="{{ a.select }}" style="padding:18px;border:1px solid {{ a.border }};border-radius:8px;background:{{ a.bg }};color:{{ a.color }};font-family:'Sora',sans-serif;font-weight:700;font-size:22px;">{{ a.label }}</button>
-          </sc-for>
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.12);border-radius:12px;padding:clamp(24px,4vw,36px);box-shadow:0 14px 40px rgba(12,8,1,0.06);">
+          <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(22px,3vw,26px);margin:0 0 4px;">Make a donation</h3>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#858380;margin:0 0 24px;">立即捐款</p>
+
+          <div style="display:flex;gap:8px;background:#f2f2f2;border-radius:8px;padding:5px;margin-bottom:24px;">
+            <sc-for list="{{ freqTabs }}" as="f" hint-placeholder-count="2">
+              <button onClick="{{ f.select }}" style="flex:1;padding:11px;border:none;border-radius:6px;background:{{ f.bg }};color:{{ f.color }};font-family:'Inter',sans-serif;font-weight:600;font-size:15px;">{{ f.label }}</button>
+            </sc-for>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;">
+            <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="4">
+              <button onClick="{{ a.select }}" style="padding:16px;border:1px solid {{ a.border }};border-radius:8px;background:{{ a.bg }};color:{{ a.color }};font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(18px,3vw,22px);">{{ a.label }}</button>
+            </sc-for>
+          </div>
+
+          <input type="text" value="{{ custom }}" onChange="{{ onCustom }}" placeholder="Other amount 自定义金额" style="width:100%;padding:13px 16px;border-radius:8px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;margin-bottom:20px;" />
+
+          <a href="https://donorbox.org" target="_blank" rel="noopener" style="display:block;text-align:center;padding:15px;background:#cc0000;color:#ffffff;border-radius:8px;text-decoration:none;font-weight:700;font-size:clamp(15px,2.5vw,18px);">{{ donateLabel }}</a>
+          <p style="font-size:13px;color:#858380;text-align:center;margin:14px 0 0;">Securely processed via Donorbox. You'll receive a tax receipt by email.</p>
         </div>
-
-        <input type="text" value="{{ custom }}" onChange="{{ onCustom }}" placeholder="Other amount 自定义金额" style="width:100%;padding:14px 16px;border-radius:8px;border:1px solid rgba(12,8,1,0.18);font-size:16px;font-family:'Inter',sans-serif;margin-bottom:20px;" />
-
-        <a href="https://donorbox.org" target="_blank" rel="noopener" style="display:block;text-align:center;padding:16px;background:#cc0000;color:#ffffff;border-radius:8px;text-decoration:none;font-weight:700;font-size:18px;">{{ donateLabel }}</a>
-        <p style="font-size:13px;color:#858380;text-align:center;margin:14px 0 0;">Securely processed via Donorbox. You'll receive a tax receipt by email.</p>
       </div>
     </div>
   </section>
 
   <!-- HOW USED -->
-  <section style="padding:80px 5%;background:#f2f2f2;">
+  <section style="padding:72px 5%;background:#f2f2f2;">
     <div style="max-width:1280px;margin:0 auto;">
       <div style="text-align:center;max-width:620px;margin:0 auto 48px;">
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">How your donation is used · 您的捐款如何使用</p>
-        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0;">Where it goes</h2>
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">How your donation is used · 您的捐款如何使用</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.15;margin:0;">Where it goes</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+      <div class="don-uses">
         <sc-for list="{{ uses }}" as="u" hint-placeholder-count="3">
-          <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:36px;">
-            <div style="width:56px;height:56px;border-radius:12px;background:{{ u.color }};display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:24px;color:#ffffff;margin-bottom:22px;">{{ u.char }}</div>
-            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;margin:0 0 2px;">{{ u.title }}</h3>
-            <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#858380;margin:0 0 12px;">{{ u.zh }}</p>
-            <p style="font-size:16px;line-height:1.6;color:#54524d;margin:0;">{{ u.body }}</p>
+          <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:28px;">
+            <div style="width:52px;height:52px;border-radius:12px;background:{{ u.color }};display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:#ffffff;margin-bottom:18px;">{{ u.char }}</div>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(17px,2.5vw,22px);margin:0 0 2px;">{{ u.title }}</h3>
+            <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#858380;margin:0 0 10px;">{{ u.zh }}</p>
+            <p style="font-size:clamp(14px,1.8vw,16px);line-height:1.6;color:#54524d;margin:0;">{{ u.body }}</p>
           </div>
         </sc-for>
       </div>
@@ -97,33 +113,33 @@
   </section>
 
   <!-- DOUBLE YOUR IMPACT -->
-  <section style="padding:80px 5%;background:#ffffff;">
-    <div style="max-width:980px;margin:0 auto;background:#0c0801;border-radius:12px;padding:clamp(32px,5vw,56px);color:#ffffff;text-align:center;">
-      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#f5bb60;margin:0 0 16px;">Double your impact · 善用企业配捐</p>
-      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,3.5vw,40px);line-height:1.2;color:#ffffff;margin:0 0 16px;">Your employer may match your gift</h2>
-      <p style="font-size:18px;line-height:1.65;color:#dad9d8;margin:0 auto 24px;max-width:620px;">Many employers — including Wells Fargo, Bank of America, Microsoft, and Google — match charitable donations dollar for dollar. Check with your HR department and provide CCA's EIN to double your impact.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:15px;color:#ffffff;">Wells Fargo</span>
-        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:15px;color:#ffffff;">Bank of America</span>
-        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:15px;color:#ffffff;">Microsoft</span>
-        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:15px;color:#ffffff;">Google</span>
+  <section style="padding:72px 5%;background:#ffffff;">
+    <div style="max-width:980px;margin:0 auto;background:#0c0801;border-radius:12px;padding:clamp(28px,5vw,56px);color:#ffffff;text-align:center;">
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#f5bb60;margin:0 0 16px;">Double your impact · 善用企业配捐</p>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,40px);line-height:1.2;color:#ffffff;margin:0 0 16px;">Your employer may match your gift</h2>
+      <p style="font-size:clamp(15px,2vw,18px);line-height:1.65;color:#dad9d8;margin:0 auto 24px;max-width:620px;">Many employers — including Wells Fargo, Bank of America, Microsoft, and Google — match charitable donations dollar for dollar. Check with your HR department and provide CCA's EIN to double your impact.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#ffffff;">Wells Fargo</span>
+        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#ffffff;">Bank of America</span>
+        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#ffffff;">Microsoft</span>
+        <span style="padding:8px 16px;border:1px solid rgba(255,255,255,0.25);border-radius:999px;font-size:14px;color:#ffffff;">Google</span>
       </div>
     </div>
   </section>
 
   <!-- OTHER WAYS -->
-  <section style="padding:80px 5%;background:#f2f2f2;">
+  <section style="padding:72px 5%;background:#f2f2f2;">
     <div style="max-width:1280px;margin:0 auto;">
       <div style="text-align:center;max-width:620px;margin:0 auto 48px;">
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Other ways to give · 其他捐赠方式</p>
-        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0;">Give your way</h2>
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Other ways to give · 其他捐赠方式</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.15;margin:0;">Give your way</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+      <div class="don-ways">
         <sc-for list="{{ ways }}" as="w" hint-placeholder-count="3">
-          <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:32px;">
-            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:20px;margin:0 0 2px;">{{ w.title }}</h3>
-            <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:#858380;margin:0 0 12px;">{{ w.zh }}</p>
-            <p style="font-size:16px;line-height:1.6;color:#54524d;margin:0;">{{ w.body }}</p>
+          <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:28px;">
+            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(17px,2.5vw,20px);margin:0 0 2px;">{{ w.title }}</h3>
+            <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:#858380;margin:0 0 10px;">{{ w.zh }}</p>
+            <p style="font-size:clamp(14px,1.8vw,16px);line-height:1.6;color:#54524d;margin:0;">{{ w.body }}</p>
           </div>
         </sc-for>
       </div>
