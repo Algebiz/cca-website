@@ -16,6 +16,24 @@
 @font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url("assets/fonts/inter-600.woff2") format("woff2");}
 @font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url("assets/fonts/inter-700.woff2") format("woff2");}
 *{box-sizing:border-box;}html{scroll-behavior:smooth;}body{margin:0;}
+
+.home-who{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.home-features{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.home-news{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;}
+
+@media(max-width:900px){
+  .home-who{grid-template-columns:1fr;gap:40px;}
+  .home-who img{height:320px !important;}
+  .home-features{grid-template-columns:1fr 1fr;}
+  .home-news{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .home-features{grid-template-columns:1fr;}
+  .home-news{grid-template-columns:1fr;}
+  .home-stats{grid-template-columns:1fr;gap:0;}
+  .home-stats .stat-divider{border-left:none !important;border-right:none !important;border-top:1px solid rgba(255,255,255,0.25);border-bottom:1px solid rgba(255,255,255,0.25);}
+}
 </style>
 <script src="news-data.js"></script>
 </helmet>
@@ -23,117 +41,121 @@
   <dc-import name="Navbar" active="home" hint-size="100%,72px"></dc-import>
 
   <!-- HERO -->
-  <section style="position:relative;min-height:620px;display:flex;align-items:center;overflow:hidden;">
+  <section style="position:relative;min-height:clamp(480px,80vw,620px);display:flex;align-items:center;overflow:hidden;">
     <img src="assets/images/perf-dance.jpg" alt="CCA students performing a traditional dance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;" />
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,8,1,0.78) 0%,rgba(12,8,1,0.55) 55%,rgba(12,8,1,0.35) 100%);"></div>
-    <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:96px 5%;width:100%;">
+    <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:72px 5%;width:100%;">
       <div style="max-width:620px;">
-        <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,6.5vw,72px);line-height:1.08;letter-spacing:-0.02em;color:#ffffff;margin:0 0 10px;">Preserving culture.<br/>Building community.</h1>
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(22px,3vw,30px);color:#f5bb60;margin:0 0 24px;">根植文化，凝聚社区。</p>
-        <p style="font-size:19px;line-height:1.55;color:#f2f2f2;margin:0 0 36px;max-width:520px;">Charlotte Chinese Academy has served 1500+ students since 1996 — with classes every Sunday in Charlotte, North Carolina.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:16px;">
-          <a href="https://chinese-school-platform.vercel.app/dashboard" target="_blank" rel="noopener" style="padding:15px 30px;background:#cc0000;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:17px;">Register now 立即报名</a>
-          <a href="About.dc.html" style="padding:15px 30px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.5);color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:17px;">Learn more 了解更多</a>
+        <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,6.5vw,72px);line-height:1.08;letter-spacing:-0.02em;color:#ffffff;margin:0 0 10px;">Preserving culture.<br/>Building community.</h1>
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(18px,3vw,30px);color:#f5bb60;margin:0 0 20px;">根植文化，凝聚社区。</p>
+        <p style="font-size:clamp(15px,2vw,19px);line-height:1.55;color:#f2f2f2;margin:0 0 32px;max-width:520px;">Charlotte Chinese Academy has served 1500+ students since 1996 — with classes every Sunday in Charlotte, North Carolina.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;">
+          <a href="https://chinese-school-platform.vercel.app/dashboard" target="_blank" rel="noopener" style="padding:13px 26px;background:#cc0000;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:clamp(15px,2vw,17px);">Register now 立即报名</a>
+          <a href="About.dc.html" style="padding:13px 26px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.5);color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:clamp(15px,2vw,17px);">Learn more 了解更多</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- INTRO -->
-  <section style="padding:88px 5%;background:#ffffff;">
+  <section style="padding:64px 5%;background:#ffffff;">
     <div style="max-width:880px;margin:0 auto;text-align:center;">
-      <p style="font-size:clamp(22px,3vw,30px);line-height:1.5;color:#24201a;margin:0;font-weight:500;">Charlotte Chinese Academy is a <span style="color:#cc0000;">501(c)(3) nonprofit</span> Chinese school founded in 1996. We serve 300+ students from kindergarten through grade 12 across 11 Chinese levels plus enrichment — every Sunday at Providence Day School, 5800 Sardis Road.</p>
+      <p style="font-size:clamp(18px,3vw,30px);line-height:1.5;color:#24201a;margin:0;font-weight:500;">Charlotte Chinese Academy is a <span style="color:#cc0000;">501(c)(3) nonprofit</span> Chinese school founded in 1996. We serve 300+ students from kindergarten through grade 12 across 11 Chinese levels plus enrichment — every Sunday at Providence Day School, 5800 Sardis Road.</p>
     </div>
   </section>
 
   <!-- STATS BAND -->
-  <section style="background:#cc0000;padding:72px 5%;">
-    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;">
-      <div>
-        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(48px,7vw,76px);line-height:1;color:#ffffff;">300+</div>
-        <div style="font-size:18px;font-weight:600;color:#ffffff;margin-top:10px;">Students</div>
-        <div style="font-size:15px;color:rgba(255,255,255,0.75);">在校学生</div>
-      </div>
-      <div style="border-left:1px solid rgba(255,255,255,0.25);border-right:1px solid rgba(255,255,255,0.25);">
-        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(48px,7vw,76px);line-height:1;color:#ffffff;">30</div>
-        <div style="font-size:18px;font-weight:600;color:#ffffff;margin-top:10px;">Years</div>
-        <div style="font-size:15px;color:rgba(255,255,255,0.75);">扎根夏洛特</div>
-      </div>
-      <div>
-        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(48px,7vw,76px);line-height:1;color:#ffffff;">20+</div>
-        <div style="font-size:18px;font-weight:600;color:#ffffff;margin-top:10px;">Classes</div>
-        <div style="font-size:15px;color:rgba(255,255,255,0.75);">精品课程</div>
+  <section style="background:#cc0000;padding:56px 5%;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="home-stats">
+        <div style="padding:24px 0;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,7vw,76px);line-height:1;color:#ffffff;">300+</div>
+          <div style="font-size:clamp(15px,2vw,18px);font-weight:600;color:#ffffff;margin-top:10px;">Students</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);">在校学生</div>
+        </div>
+        <div class="stat-divider" style="border-left:1px solid rgba(255,255,255,0.25);border-right:1px solid rgba(255,255,255,0.25);padding:24px 0;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,7vw,76px);line-height:1;color:#ffffff;">30</div>
+          <div style="font-size:clamp(15px,2vw,18px);font-weight:600;color:#ffffff;margin-top:10px;">Years</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);">扎根夏洛特</div>
+        </div>
+        <div style="padding:24px 0;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(40px,7vw,76px);line-height:1;color:#ffffff;">20+</div>
+          <div style="font-size:clamp(15px,2vw,18px);font-weight:600;color:#ffffff;margin-top:10px;">Classes</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);">精品课程</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURE: WHAT IS CCA -->
-  <section style="padding:88px 5%;background:#ffffff;">
-    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
-      <div>
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Who we are</p>
-        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0 0 8px;">What is Charlotte Chinese Academy?</h2>
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;color:#858380;margin:0 0 24px;">我们是谁？</p>
-        <p style="font-size:18px;line-height:1.65;color:#54524d;margin:0 0 18px;">CCA is a community nonprofit Chinese school founded in 1996 — today the largest Chinese school in North Carolina. We believe language is the bridge to culture, and every Sunday hundreds of families cross that bridge together.</p>
-        <p style="font-size:18px;line-height:1.65;color:#54524d;margin:0 0 28px;">Built by parents, run by volunteers, and sustained by a community that believes in what we do.</p>
-        <a href="About.dc.html" style="display:inline-flex;align-items:center;gap:8px;color:#cc0000;font-weight:600;font-size:17px;text-decoration:none;">Learn our story 了解我们的故事 →</a>
-      </div>
-      <div>
-        <img src="assets/images/dragon-dance.jpg" alt="Lion dance performance at a CCA event" style="width:100%;height:480px;object-fit:cover;border-radius:8px;display:block;" />
+  <section style="padding:72px 5%;background:#ffffff;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="home-who">
+        <div>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">Who we are</p>
+          <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0 0 8px;">What is Charlotte Chinese Academy?</h2>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(18px,2.5vw,22px);color:#858380;margin:0 0 24px;">我们是谁？</p>
+          <p style="font-size:clamp(15px,2vw,18px);line-height:1.65;color:#54524d;margin:0 0 18px;">CCA is a community nonprofit Chinese school founded in 1996 — today the largest Chinese school in North Carolina. We believe language is the bridge to culture, and every Sunday hundreds of families cross that bridge together.</p>
+          <p style="font-size:clamp(15px,2vw,18px);line-height:1.65;color:#54524d;margin:0 0 28px;">Built by parents, run by volunteers, and sustained by a community that believes in what we do.</p>
+          <a href="About.dc.html" style="display:inline-flex;align-items:center;gap:8px;color:#cc0000;font-weight:600;font-size:clamp(15px,2vw,17px);text-decoration:none;">Learn our story 了解我们的故事 →</a>
+        </div>
+        <div>
+          <img src="assets/images/dragon-dance.jpg" alt="Lion dance performance at a CCA event" style="width:100%;height:480px;object-fit:cover;border-radius:8px;display:block;" />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURES LIST -->
-  <section style="padding:88px 5%;background:#f2f2f2;">
+  <section style="padding:72px 5%;background:#f2f2f2;">
     <div style="max-width:1280px;margin:0 auto;">
-      <div style="text-align:center;max-width:640px;margin:0 auto 56px;">
-        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">What we offer</p>
-        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0;">A full Chinese education, every Sunday</h2>
+      <div style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 16px;">What we offer</p>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0;">A full Chinese education, every Sunday</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
-        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:36px;">
-          <div style="width:56px;height:56px;border-radius:50%;background:#1f4ea6;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:24px;color:#ffffff;margin-bottom:24px;">语</div>
-          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:24px;margin:0 0 4px;">Language Classes</h3>
-          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#858380;margin:0 0 14px;">语言课程</p>
-          <p style="font-size:16px;line-height:1.6;color:#54524d;margin:0;">11 Chinese Home Language levels plus 4 Chinese as a Second Language levels. Sundays, 9–11 AM.</p>
+      <div class="home-features">
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:32px;">
+          <div style="width:52px;height:52px;border-radius:50%;background:#1f4ea6;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:#ffffff;margin-bottom:20px;">语</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,2.5vw,24px);margin:0 0 4px;">Language Classes</h3>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:#858380;margin:0 0 12px;">语言课程</p>
+          <p style="font-size:clamp(14px,1.8vw,16px);line-height:1.6;color:#54524d;margin:0;">11 Chinese Home Language levels plus 4 Chinese as a Second Language levels. Sundays, 9–11 AM.</p>
         </div>
-        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:36px;">
-          <div style="width:56px;height:56px;border-radius:50%;background:#f29e1d;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:24px;color:#ffffff;margin-bottom:24px;">艺</div>
-          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:24px;margin:0 0 4px;">Enrichment Classes</h3>
-          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#858380;margin:0 0 14px;">才艺课程</p>
-          <p style="font-size:16px;line-height:1.6;color:#54524d;margin:0;">Dance, Art, Chess, Math, and Lion Dance. Sundays, 11 AM–1 PM.</p>
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:32px;">
+          <div style="width:52px;height:52px;border-radius:50%;background:#f29e1d;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:#ffffff;margin-bottom:20px;">艺</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,2.5vw,24px);margin:0 0 4px;">Enrichment Classes</h3>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:#858380;margin:0 0 12px;">才艺课程</p>
+          <p style="font-size:clamp(14px,1.8vw,16px);line-height:1.6;color:#54524d;margin:0;">Dance, Art, Chess, Math, and Lion Dance. Sundays, 11 AM–1 PM.</p>
         </div>
-        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:36px;">
-          <div style="width:56px;height:56px;border-radius:50%;background:#0b6e4f;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:24px;color:#ffffff;margin-bottom:24px;">试</div>
-          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:24px;margin:0 0 4px;">Proficiency Exams</h3>
-          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:#858380;margin:0 0 14px;">汉语水平考试</p>
-          <p style="font-size:16px;line-height:1.6;color:#54524d;margin:0;">YCT and HSK exam preparation and on-site registration for certification.</p>
+        <div style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;padding:32px;">
+          <div style="width:52px;height:52px;border-radius:50%;background:#0b6e4f;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:#ffffff;margin-bottom:20px;">试</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,2.5vw,24px);margin:0 0 4px;">Proficiency Exams</h3>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:#858380;margin:0 0 12px;">汉语水平考试</p>
+          <p style="font-size:clamp(14px,1.8vw,16px);line-height:1.6;color:#54524d;margin:0;">YCT and HSK exam preparation and on-site registration for certification.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BLOG / LATEST NEWS -->
-  <section style="padding:88px 5%;background:#ffffff;">
+  <!-- LATEST NEWS -->
+  <section style="padding:72px 5%;background:#ffffff;">
     <div style="max-width:1280px;margin:0 auto;">
-      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:48px;">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:40px;">
         <div>
-          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 12px;">Community</p>
-          <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0;">Latest news 最新动态</h2>
+          <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#cc0000;margin:0 0 12px;">Community</p>
+          <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,52px);line-height:1.12;letter-spacing:-0.01em;margin:0;">Latest news 最新动态</h2>
         </div>
-        <a href="News.dc.html" style="color:#cc0000;font-weight:600;font-size:17px;text-decoration:none;white-space:nowrap;">View all 查看更多 →</a>
+        <a href="News.dc.html" style="color:#cc0000;font-weight:600;font-size:clamp(15px,2vw,17px);text-decoration:none;white-space:nowrap;">View all 查看更多 →</a>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+      <div class="home-news">
         <sc-for list="{{ newsCards }}" as="post" hint-placeholder-count="3">
           <a href="{{ post.href }}" style="background:#ffffff;border:1px solid rgba(12,8,1,0.1);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;">
             <img src="{{ post.image }}" alt="" style="width:100%;height:200px;object-fit:cover;display:block;" />
-            <div style="padding:24px;display:flex;flex-direction:column;flex:1;">
+            <div style="padding:22px;display:flex;flex-direction:column;flex:1;">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
                 <span style="padding:4px 10px;border-radius:6px;background:{{ post.tagBg }};color:{{ post.tagColor }};font-size:13px;font-weight:600;">{{ post.category }}</span>
                 <span style="font-size:13px;color:#858380;">{{ post.date }}</span>
               </div>
-              <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:20px;line-height:1.3;margin:0 0 10px;">{{ post.title }}</h3>
+              <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(17px,2vw,20px);line-height:1.3;margin:0 0 10px;">{{ post.title }}</h3>
               <p style="font-size:15px;line-height:1.6;color:#54524d;margin:0 0 16px;">{{ post.excerpt }}</p>
               <span style="margin-top:auto;color:#cc0000;font-weight:600;font-size:15px;">Read more 阅读更多 →</span>
             </div>
@@ -144,23 +166,23 @@
   </section>
 
   <!-- CTA RED BANNER -->
-  <section style="padding:72px 5%;background:#ffffff;">
-    <div style="max-width:1280px;margin:0 auto;background:#cc0000;border-radius:12px;padding:clamp(40px,6vw,80px);text-align:center;">
-      <span style="display:inline-block;padding:6px 16px;border-radius:999px;background:rgba(255,255,255,0.18);color:#ffffff;font-weight:600;font-size:14px;letter-spacing:0.06em;margin-bottom:24px;">● NOW OPEN 报名进行中</span>
-      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4.5vw,52px);line-height:1.12;color:#ffffff;margin:0 0 10px;">2026–2027 registration is now open</h2>
-      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,3vw,28px);color:#fcebd1;margin:0 0 18px;">2026–2027学年报名火热进行中！</p>
-      <p style="font-size:18px;line-height:1.55;color:#f9e5e5;margin:0 auto 32px;max-width:560px;">Registration closes June 30. Spots fill fast — enroll your child today.</p>
-      <a href="https://chinese-school-platform.vercel.app/dashboard" target="_blank" rel="noopener" style="display:inline-block;padding:15px 34px;background:#ffffff;color:#cc0000;border-radius:6px;text-decoration:none;font-weight:700;font-size:17px;">Register now 立即报名</a>
+  <section style="padding:56px 5%;background:#ffffff;">
+    <div style="max-width:1280px;margin:0 auto;background:#cc0000;border-radius:12px;padding:clamp(36px,6vw,80px);text-align:center;">
+      <span style="display:inline-block;padding:6px 16px;border-radius:999px;background:rgba(255,255,255,0.18);color:#ffffff;font-weight:600;font-size:14px;letter-spacing:0.06em;margin-bottom:20px;">● NOW OPEN 报名进行中</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,4.5vw,52px);line-height:1.12;color:#ffffff;margin:0 0 10px;">2026–2027 registration is now open</h2>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(17px,3vw,28px);color:#fcebd1;margin:0 0 18px;">2026–2027学年报名火热进行中！</p>
+      <p style="font-size:clamp(15px,2vw,18px);line-height:1.55;color:#f9e5e5;margin:0 auto 28px;max-width:560px;">Registration closes June 30. Spots fill fast — enroll your child today.</p>
+      <a href="https://chinese-school-platform.vercel.app/dashboard" target="_blank" rel="noopener" style="display:inline-block;padding:14px 30px;background:#ffffff;color:#cc0000;border-radius:6px;text-decoration:none;font-weight:700;font-size:clamp(15px,2vw,17px);">Register now 立即报名</a>
     </div>
   </section>
 
   <!-- CTA DONATE -->
-  <section style="padding:88px 5%;background:#f2f2f2;">
+  <section style="padding:72px 5%;background:#f2f2f2;">
     <div style="max-width:720px;margin:0 auto;text-align:center;">
-      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4.5vw,48px);line-height:1.12;margin:0 0 8px;">Support CCA's mission</h2>
-      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:22px;color:#858380;margin:0 0 22px;">您的支持，是我们前行的力量</p>
-      <p style="font-size:18px;line-height:1.65;color:#54524d;margin:0 0 32px;">For 30 years, community support has kept Chinese language and culture alive in Charlotte. Your tax-deductible gift funds teacher training, cultural events, and the day-to-day work of the school.</p>
-      <a href="Donate.dc.html" style="display:inline-block;padding:15px 34px;background:#cc0000;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:17px;">Donate now 立即捐款</a>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,48px);line-height:1.12;margin:0 0 8px;">Support CCA's mission</h2>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(18px,2.5vw,22px);color:#858380;margin:0 0 22px;">您的支持，是我们前行的力量</p>
+      <p style="font-size:clamp(15px,2vw,18px);line-height:1.65;color:#54524d;margin:0 0 32px;">For 30 years, community support has kept Chinese language and culture alive in Charlotte. Your tax-deductible gift funds teacher training, cultural events, and the day-to-day work of the school.</p>
+      <a href="Donate.dc.html" style="display:inline-block;padding:14px 30px;background:#cc0000;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:clamp(15px,2vw,17px);">Donate now 立即捐款</a>
     </div>
   </section>
 
